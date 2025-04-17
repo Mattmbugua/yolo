@@ -13,16 +13,13 @@ RUN npm install
 # Copy the rest of the application code to the container
 COPY . .
 
-FROM alpine:3.16.7
+RUN npm run build
 
-WORKDIR /app
+# Stage 2: Serve the production build using Nginx
+FROM nginx:alpine
 
-RUN apk update && apk add npm
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
-COPY --from=build /usr/src/app /app
+EXPOSE 80
 
-# Expose the port the app runs on
-EXPOSE 3000
-
-# Define the command to run your app
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
