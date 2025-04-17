@@ -18,8 +18,8 @@ function Product (props) {
                         alt = {props.photo}/>
                     </div>
                     <div className="product-name-cost">
-                        <h5 className="float-left gold">{props.name} </h5>
-                        <h6 className="float-right font-weight-bold"> Ksh  {props.price}</h6>
+                        <h5 className="float-left gold">{props.name}</h5>
+                        <h6 className="float-right font-weight-bold"> Ksh{props.price}\= </h6>
                     </div>
                     <div >
                     </div>
