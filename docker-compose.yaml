@@ -18,7 +18,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "3000:3000"
+      - "3000:80"
     depends_on: 
       - brian-yolo-backend
     networks:
@@ -36,6 +36,8 @@ services:
       - "5000:5000"
     depends_on: 
       - app-ip-mongo
+    environment:
+      - MONGODB_URI=mongodb://app-ip-mongo/yolomy
     networks:
       - app-net
 
@@ -51,6 +53,11 @@ services:
       - type: volume
         source: app-mongo-data
         target: /data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 #Creates the network infrastructure necessary for the containers to communicate with each other
 networks:
