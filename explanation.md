@@ -94,7 +94,7 @@ This volume is mounted to the mongoDB as follows:
 
 Docker volumes ensures that the database retains its state even if the container is stopped, removed, or rebuilt.     
 
- 4. Git workflow
+ 5. Git workflow
  ----------------------------------------------------------------------------------------------
 After forking the project from the repository provided i cloned the project into my device using 
 `git clone <repourl>`
@@ -102,3 +102,51 @@ I have used git add . to stage all the changes (new files, modifications, deleti
 i have made frequent commits at different stages throught the project.
 A .gitignore file was used to prevent unnecessary files and directories.
 After all the tests had been i finally used `git push` to push all the adjusted Dockerfiles, docker-compose and explation.md files.
+
+
+6. Successful Running of the Applications and Debugging Measures Applied
+# Running the application
+After defining the docker-compose.yml i run the commands:
+   a. docker-compose build
+   b. docker-compose up
+
+These commands:
+
+    Built the Docker images for the client, backend, and MongoDB.
+    Started all containers using the defined configurations (ports, volumes, networks).
+
+Once the containers were up and running i looked at the client( front-end on localhost:3000).
+# Running the application
+There was a mismatch of ports.The frontend was exposing port 80, but I was accessing localhost:3000. Updating the mapping to 3000:80 in the docker-compose.yml fixed this.
+Database connectivity: I set MONGODB_URI in the backend to mongodb://app-ip-mongo/yolomy to match the MongoDB service name in Docker Compose.
+Logs inspection: I used docker logs <container_name> and docker-compose logs to check for errors like failed connections or missing files.
+
+
+7. Good Practices (Docker image tag naming, etc.)
+    To maintain clarity and consistency across images, i used a standardized naming convention that follows this format: <dockerhub-username>/<project-name>-<service>:<version>  so it looks like bigmatt98/ecommerce-frontend:1.0.0 and bigmatt98/ecommerce-backend:1.0.1 for backend. This helps identify the different services frontend and backend, the owner of the service bigmatt98 and the version v1.0.0.
+
+    Multi-stage builds: Multi staging was used in both front end and backend this helped reduce the  final size image separating the build environment from the runtime image.
+    Using slim and alpine images: This kept the images light weight. node:14-slim and nginx both helped keep the images small. The images sizes are as follows 50mb- frontend and 87mb - backend. 
+    Port mapping consistency:
+    Clearly exposed and mapped internal ports to host machine:
+        Backend: 5000:5000  Frontend (Nginx): 3000:80
+    Container naming:
+    Explicitly set using container_name to avoid confusion during development and debugging.
+    Network isolation:
+    Used a custom bridge network (app-net) to isolate application communication and avoid port conflicts with other Docker services on the system.
+    Persistent storage with Docker Volumes:
+        Defined app-mongo-data to persist MongoDB data between container restarts or rebuilds.
+
+8. Screenshots
+# Screenshot of Deployed Images on DockerHub
+
+![Images on DockerHub](Screenshot/docker_images.png).
+    
+
+    
+
+    
+
+    
+
+        
