@@ -56,3 +56,29 @@ This approach ensures the app is served through a fast, lightweight web server.
 ### MongoDB
 
 The MongoDB service uses the official `mongo` image, which includes its own entrypoint. No custom Dockerfile needed, and port `27017` was exposed for database access.
+
+
+
+ 3. Docker-compose Networking (Port allocation for the app and a bridge network implementation)
+ ----------------------------------------------------------------------------------------------
+ I used bridge drivers because the bridge driver allows for isolated communication between containers while also enabling external traffic routing to exposed ports.
+ I used a bridge network called `app.net` that i configured in docker-compose.yml. Through this network each service can resolve and communicate with each other using their repective container names. I have used custom ip adresses(subnet and ip range) to avoid conflicts with other docker networks.  
+# port allocation
+ front-end (mattfront-client)
+ Mapped port 3000 on the host to container port 80, since the React build is served by Nginx.
+ ports:
+  - "3000:80"
+
+ back-end (mattback-backend)
+ Mapped port 5000 on the host to container port 5000, where the Express server runs.
+ ports:
+  - "5000:5000"
+
+MongoDB (app-ip-mongo)
+Exposed on port 27017, allowing local database inspection or testing if necessary.
+ ports:
+  - "27017:27017"
+
+
+
+
