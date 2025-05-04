@@ -1,16 +1,18 @@
----
-# - name: Pull image from repository
-#   docker_image:
-#     name: brianbwire/brian-yolo-backend:v1.0.0
-#     source: pull
+- name: Pull backend image
+  docker_image:
+    name: bigmatt98/ecommerce-backend:v1.0.1
+    source: pull
 
-# - name: Create Node.js Backend Container
-#   docker_container:
-#     name: brian-yolo-backend
-#     image: brianbwire/brian-yolo-backend:v1.0.0
-#     networks:
-#       - name: app-net
-#     ports:
-#       - "5000:5000"
-#     command: "npm start"
-#   become: yes
+- name: Create backend container
+  docker_container:
+    name: matt-backend-container
+    image: bigmatt98/ecommerce-backend:v1.0.1
+    ports:
+      - "5000:5000"
+    env:
+      MONGODB_URI: mongodb://app-ip-mongo/yolomy
+    networks:
+      - name: app-net
+    restart_policy: always
+    tty: yes
+    interactive: yes
