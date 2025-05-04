@@ -1,0 +1,17 @@
+- name: Pull frontend image
+  docker_image:
+    name: bigmatt98/ecommerce-frontend:v1.0.0
+    source: pull
+
+- name: Create frontend container
+  docker_container:
+    name: matt-client-container
+    image: bigmatt98/ecommerce-frontend:v1.0.0
+    ports:
+      - "3000:80"
+    networks:
+      - name: app-net
+    depends_on:
+      - matt-backend-container
+    tty: yes
+    interactive: yes
