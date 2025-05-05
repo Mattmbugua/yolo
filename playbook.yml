@@ -2,8 +2,13 @@
 - name: Deploy YOLO E-commerce App with Docker using Ansible
   hosts: all
   become: true
-  roles: 
-    - frontend-deployment
-    - setup-mongodb   
-    - backend-deployment
+  tasks:
+    - name: Clone e-commerce repository from GitHub
+      git:
+        repo: 'https://github.com/Mattmbugua/yolo.git'
+        dest: /opt/ecommerce
+  roles:
+    - { role: frontend-deployment, tags: ["frontend"] }
+    - { role: setup-mongodb,      tags: ["mongodb"] }
+    - { role: backend-deployment, tags: ["backend"] }
     

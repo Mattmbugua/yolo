@@ -10,9 +10,8 @@
     ports:
       - "5000:5000"
     env:
-      MONGODB_URI: mongodb://app-ip-mongo/yolomy
+      MONGO_URI: "mongodb://app-mongo:27017/yolomy"
     networks:
       - name: app-net
     restart_policy: always
-    tty: yes
-    interactive: yes
+   
