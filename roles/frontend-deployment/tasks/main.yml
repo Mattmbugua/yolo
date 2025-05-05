@@ -3,6 +3,12 @@
     name: bigmatt98/ecommerce-frontend:v1.0.0
     source: pull
 
+- name: Create app-net Docker network
+  docker_network:
+    name: app-net
+    driver: bridge
+
+
 - name: Create frontend container
   docker_container:
     name: matt-client-container
@@ -11,7 +17,7 @@
       - "3000:80"
     networks:
       - name: app-net
-    depends_on:
-      - matt-backend-container
-    tty: yes
-    interactive: yes
+    state: started
+    restart_policy: always
+    interactive: true
+
