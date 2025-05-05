@@ -39,7 +39,7 @@ function NewProductForm (props) {
             <div className="container product-form">
                 <ReusableForm 
                 formSubmissionHandler ={handleNewProductFormSubmission}
-                buttonText = 'Add Product' />
+                buttonText = 'Add Product Test' />
             </div>
         </React.Fragment>
     )

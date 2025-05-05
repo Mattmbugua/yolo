@@ -1,0 +1,9 @@
+---
+- name: Create app-net network
+  community.docker.docker_network:
+    name: app-net
+    driver: bridge
+    attachable: true
+    ipam_config:
+      - subnet: "172.20.0.0/16"
+        iprange: "172.20.0.0/16"

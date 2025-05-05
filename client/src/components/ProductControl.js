@@ -78,7 +78,7 @@ class ProductControl extends Component {
     }
     
     componentDidMount(){
-        axios.get('http://localhost:5000/api/products')
+        axios.get('/api/products')
             .then(res =>{
                 console.log(res)
                 this.setState({
@@ -157,8 +157,13 @@ class ProductControl extends Component {
         //     console.log(pair[0]+ ', ' + pair[1]); 
         // }       
         // console.log(...formData)
-        axios.post('http://localhost:5000/api/products', newProduct)
-            .then(res => console.log(res.data))
+        try{
+            axios.post('/api/products', newProduct)
+            .then(res => window.alert(`${res.data}`))
+        }catch(e){
+            window.alert(`THERE WAS AN ERROR ${e}`)
+        }
+        
         this.setState({
             formVisibleOnPage: false
         })

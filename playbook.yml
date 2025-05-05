@@ -7,8 +7,12 @@
       git:
         repo: 'https://github.com/Mattmbugua/yolo.git'
         dest: /opt/ecommerce
+    
   roles:
-    - { role: frontend-deployment, tags: ["frontend"] }
+    - { role: network_setup,      tags: ["network"] }
     - { role: setup-mongodb,      tags: ["mongodb"] }
     - { role: backend-deployment, tags: ["backend"] }
+    - { role: frontend-deployment, tags: ["frontend"] }
+    
+    
     

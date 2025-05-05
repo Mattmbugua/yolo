@@ -3,6 +3,11 @@
   docker_volume:
     name: app-mongo-data
 
+- name: Create app-net Docker network
+  docker_network:
+    name: app-net
+    driver: bridge
+
 - name: Pull MongoDB image
   docker_image:
     name: mongo

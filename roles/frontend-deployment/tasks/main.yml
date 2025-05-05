@@ -3,10 +3,7 @@
     name: bigmatt98/ecommerce-frontend:v1.0.0
     source: pull
 
-- name: Create app-net Docker network
-  docker_network:
-    name: app-net
-    driver: bridge
+
 
 
 - name: Create frontend container
