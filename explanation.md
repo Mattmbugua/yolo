@@ -146,6 +146,66 @@ Logs inspection: I used docker logs <container_name> and docker-compose logs to 
     
 
     
+# Explanation of Ansible Playbook Execution
+
+## Order of Tasks/Roles in `playbook.yml`
+
+The Ansible playbook is structured to provision a Vagrant-based Ubuntu virtual machine and deploy a containerized e-commerce application. The tasks/roles run in the following order:
+
+1. **docker**  - docker-setup
+   Installs Docker and Docker Compose on the Vagrant VM.
+2. **network** - network_setup
+   Creates the network app-net and volume app-mongo-data for use in the other containers.
+2. **mongodb** - setup-mongodb 
+   Pulls and runs the MongoDB container to ensure data persistence is ready.
+3. **backend**  - backend-deployment
+   Clones the backend service code, builds its Docker image, and runs the container.
+4. **frontend**  - frontend-deployment
+   Does the same for the frontend (React) application.
+
+## Why the Order Matters
+
+- Docker must be installed first, as all other services depend on it.
+- Network runs second so that we can have the shared volume and network for use in the other      containers
+- MongoDB should start before backend so the Node.js backend can successfully connect.
+- Backend must run before frontend to expose API endpoints for the UI.
+- Frontend runs last, as it typically connects to the backend via environment variables or container linking.
+
+## Role Descriptions
+
+### `docker-setup`
+- Installs Docker and Docker Compose using apt and the `docker` official repo.
+- Ensures `docker` service is enabled and running.
+
+### `network_setup`
+- Installs Docker and Docker Compose using apt and the `docker` official repo.
+- Ensures `docker` service is enabled and running.
+
+### `setup-mongodb`
+- Pulls the official MongoDB Docker image.
+- Runs a container with data persistence via volume mapping.
+
+### `backend-deployment`
+- Uses `git` to clone the backend repository.
+- Builds the backend Docker image using `docker_image`.
+- Runs the container with environment variables and links to MongoDB.
+
+### `frontend-deployment`
+- Clones the frontend React repo.
+- Builds the image and serves it via a container (e.g., with Nginx or `npm run start`).
+- Maps port `3000` to host for UI access.
+
+## Ansible Modules Used
+
+| Module           | Purpose                                      |
+|------------------|----------------------------------------------|
+| `apt`            | Install system packages like Docker          |
+| `docker_container` | Start/stop Docker containers               |
+| `docker_image`   | Build images from Dockerfiles                |
+| `git`            | Clone code repositories                      |
+| `copy`           | Transfer configuration files if needed       |
+| `template`       | Used to create `.env` or config files        |
+| `file`           | Create directories or set permissions        |
 
     
 
