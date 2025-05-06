@@ -1,5 +1,5 @@
 - name: Pull frontend image
-  docker_image:
+  community.docker.docker_image:
     name: bigmatt98/ecommerce-frontend:v1.0.0
     source: pull
 
@@ -7,7 +7,7 @@
 
 
 - name: Create frontend container
-  docker_container:
+  community.docker.docker_container:
     name: matt-client-container
     image: bigmatt98/ecommerce-frontend:v1.0.0
     ports:

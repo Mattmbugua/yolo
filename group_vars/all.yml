@@ -1,0 +1,4 @@
+repo_url: https://github.com/Mattmbugua/yolo.git
+app_dir: /home/vagrant/app
+frontend_port: 3000
+backend_port: 5000

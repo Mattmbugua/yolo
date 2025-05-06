@@ -8,9 +8,12 @@ Vagrant.configure("2") do |config|
 
   # Forward port 3000 from guest to host (e.g. Node.js/React app)
   config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 5000, host: 5000
+
 
   # Optional: You can also use a private network
   config.vm.network "private_network", ip: "192.168.56.10"
+  
 
   # VirtualBox configuration
   config.vm.provider "virtualbox" do |vb|

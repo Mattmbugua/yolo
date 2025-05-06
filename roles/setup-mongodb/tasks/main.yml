@@ -1,26 +1,24 @@
 
-- name: Create Docker volume
-  docker_volume:
-    name: app-mongo-data
-
-- name: Create app-net Docker network
-  docker_network:
-    name: app-net
-    driver: bridge
-
 - name: Pull MongoDB image
-  docker_image:
+  community.docker.docker_image:
     name: mongo
     source: pull
 
 - name: Create MongoDB container
-  docker_container:
+  community.docker.docker_container:
     name: app-mongo
     image: mongo
     state: started
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - app-mongo-data:/data/db
     networks:
       - name: app-net
+- name: Wait for MongoDB to start 
+  wait_for:
+    host: localhost
+    port: 27018
+    delay: 10  # Wait for 10 seconds before executing the next task
+    timeout: 60  # Timeout after 60 seconds if MongoDB doesn't start
+

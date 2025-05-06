@@ -6,9 +6,10 @@
     - name: Clone e-commerce repository from GitHub
       git:
         repo: 'https://github.com/Mattmbugua/yolo.git'
-        dest: /opt/ecommerce
+        dest: '/home/vagrant/app'
     
   roles:
+    - { role: docker-setup,      tags: ["docker-setup"] }
     - { role: network_setup,      tags: ["network"] }
     - { role: setup-mongodb,      tags: ["mongodb"] }
     - { role: backend-deployment, tags: ["backend"] }

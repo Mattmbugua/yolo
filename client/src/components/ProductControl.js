@@ -78,7 +78,7 @@ class ProductControl extends Component {
     }
     //CAN YOU SEE THIS CHANGE
     componentDidMount(){
-        axios.get('/api/products')
+        axios.get('http://localhost:5000/api/products/')
             .then(res =>{
                 console.log(res)
                 this.setState({
@@ -158,7 +158,7 @@ class ProductControl extends Component {
         // }       
         // console.log(...formData)
         try{
-            axios.post('/api/products', newProduct)
+            axios.post('http://localhost:5000/api/products', newProduct)
             .then(res => window.alert(`${res.data}`))
         }catch(e){
             window.alert(`THERE WAS AN ERROR ${e}`)

@@ -1,10 +1,10 @@
 - name: Pull backend image
-  docker_image:
+  community.docker.docker_image:
     name: bigmatt98/ecommerce-backend:1.0.1
     source: pull
 
 - name: Create backend container
-  docker_container:
+  community.docker.docker_container:
     name: matt-backend-container
     image: bigmatt98/ecommerce-backend:1.0.1
     ports:

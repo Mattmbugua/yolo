@@ -7,3 +7,6 @@
     ipam_config:
       - subnet: "172.20.0.0/16"
         iprange: "172.20.0.0/16"
+- name: Create Docker volume
+  community.docker.docker_volume:
+    name: app-mongo-data
