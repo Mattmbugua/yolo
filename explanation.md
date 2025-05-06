@@ -163,6 +163,37 @@ The Ansible playbook is structured to provision a Vagrant-based Ubuntu virtual m
 4. **frontend**  - frontend-deployment
    Does the same for the frontend (React) application.
 
+
+
+
+## Pretasks 
+Pre-Tasks
+
+Before executing the main roles of the playbook, several important pre-tasks are performed to prepare the system environment:
+
+    **Create Keyrings Directory**
+    The directory /etc/apt/keyrings is created to securely store GPG keys for APT repositories.
+
+    -Add Docker GPG Key
+    The official Docker GPG key is downloaded and saved in the keyrings directory. This key is required to verify the authenticity of packages downloaded from Docker’s APT repository.
+
+    -Clean Up Old Docker Repositories (if any)
+    Any previously added Docker APT repositories are removed to avoid conflicts or duplication.
+
+    -Add Docker APT Repository
+    The correct Docker APT repository is added with the signed-by option to ensure secure installation using the previously saved GPG key.
+
+    -Update APT Cache
+    The APT package index is updated to make sure the latest package information is used.
+
+    -Install Prerequisite Packages
+    Core packages such as git, curl, and python3-pip are installed. These are necessary for fetching code, managing Python packages, and enabling further automation.
+
+    -Install Python Docker Module
+    The docker Python module is installed using pip. This module is essential for Ansible's Docker-related tasks and modules to function correctly in subsequent roles.
+
+    These pre-tasks ensure the target machine is fully prepared for the containerization and deployment steps that follow. 
+
 ## Why the Order Matters
 
 - Docker must be installed first, as all other services depend on it.
