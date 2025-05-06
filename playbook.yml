@@ -1,19 +1,54 @@
----
 - name: Deploy YOLO E-commerce App with Docker using Ansible
   hosts: all
   become: true
   tasks:
-    - name: Clone e-commerce repository from GitHub
-      git:
-        repo: 'https://github.com/Mattmbugua/yolo.git'
-        dest: '/home/vagrant/app'
-    
+
+    # Pre-tasks: Preparing the system
+    - name: Create keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Download Docker GPG key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: '0644'
+
+    - name: Remove old Docker repository if it exists
+      apt_repository:
+       repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+       state: absent
+       filename: docker
+
+    - name: Add Docker APT repository
+      apt_repository:
+        repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+        filename: docker
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install prerequisite packages (git, curl, Python, etc.)
+      apt:
+        name:
+          - git
+          - curl
+          - python3-pip
+        state: present
+
+    - name: Install Python Docker module (required for Ansible's docker modules)
+      pip:
+        name: docker
+
+    # Role-based tasks
   roles:
     - { role: docker-setup,      tags: ["docker-setup"] }
     - { role: network_setup,      tags: ["network"] }
     - { role: setup-mongodb,      tags: ["mongodb"] }
     - { role: backend-deployment, tags: ["backend"] }
     - { role: frontend-deployment, tags: ["frontend"] }
-    
-    
-    
