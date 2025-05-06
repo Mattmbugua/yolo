@@ -83,3 +83,7 @@ This will execute the playbook and run all tasks, including:
 - Setting up the MongoDB container
 - Deploying the backend and frontend apps
 
+### 4. Access the application
+Once the playbook has finished running successfully, you should be able to access the YOLO e-commerce app by navigating to the VM's IP address in your browser (or localhost if you're running it locally):
+    front end : http://localhost:3000
+    back end: http://localhost:5000
