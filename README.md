@@ -5,7 +5,7 @@ This project automates the deployment of a containerized e-commerce application 
 ---
 
 ## 📦 Project Structure
-## 📦 Project Structure
+
 
 ```
 .
@@ -23,4 +23,63 @@ This project automates the deployment of a containerized e-commerce application 
 └── Vagrantfile                  # Vagrant file to provision the Ubuntu VM
 ```
 
+
+---
+
+## 🚀 Technologies Used
+
+- Ansible – for orchestration
+- Docker – containerization
+- MongoDB – NoSQL database
+- Node.js / Express – backend
+- React – frontend
+- Vagrant & VirtualBox – development environment
+
+---
+
+## 🔧 Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Mattmbugua/yolo.git
+cd yolo
+
+## 🚀 Start VM & Run Ansible Playbook
+
+Follow these steps to provision the virtual machine and deploy the Dockerized e-commerce application using Ansible:
+
+### 1. Start the Virtual Machine
+
+Make sure you have [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) installed.
+
+```bash
+vagrant up
+```
+
+This command will:
+- Download the Ubuntu 20.04 base image (if not already downloaded)
+- Boot the VM
+- Configure SSH access
+
+### 2. SSH into the VM (Optional)
+
+To manually access the VM:
+
+```bash
+vagrant ssh
+```
+
+### 3. Run the Ansible Playbook
+
+From your project root (where `playbook.yml` and `inventory.yml` are located), run:
+
+```bash
+ansible-playbook -i inventory.yml playbook.yml
+```
+
+This will execute the playbook and run all tasks, including:
+- Creating the necessary Docker networks and creating the volume used.
+- Installing Docker
+- Setting up the MongoDB container
+- Deploying the backend and frontend apps
 
