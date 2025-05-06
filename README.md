@@ -121,4 +121,41 @@ If you need to restart or stop the application, you can use Docker commands to m
 
 - To view logs from the containers:
 
-       docker logs <container_id>
+       docker logs matt-backend-container
+       docker logs matt-client-container
+       docker logs app-mongo
+
+
+## Troubleshooting
+
+If you encounter any issues during setup or usage of the application, check the following:
+
+### 1. **Check Docker Logs**
+
+If a container isn't behaving as expected (e.g., it fails to start or crashes), you can inspect the logs to help diagnose the issue.
+
+- To view the logs for a running container, use the following command:
+
+  ```bash
+    docker logs matt-backend-container
+    docker logs matt-client-container
+    docker logs app-mongo
+
+
+  
+
+### 2. **Check Network Connectivity**
+    If the application isn't accessible, ensure that the containers are correctly connected to the network.
+    To view the network connections and inspect the container's network settings, use:
+        docker network ls
+        docker network inspect app-net
+
+### 3. **Check Docker Volume Connectivity**
+    If your containers are using Docker volumes (for persistent storage, etc.), ensure the volumes are correctly mounted and connected.
+    To list the Docker volumes, use:
+
+        docker volume ls
+    To inspect a specific volume, use:
+
+        docker volume inspect app-mongo-data
+
