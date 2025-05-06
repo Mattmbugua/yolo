@@ -1,47 +1,26 @@
-YOLO E-commerce App Deployment using Ansible
+# YOLO E-commerce App Deployment using Ansible
 
 This project automates the deployment of a containerized e-commerce application using Ansible. It configures the necessary environment, installs Docker, pulls Docker images, sets up containers for the backend, frontend, and MongoDB, and ensures smooth orchestration across the stack.
-📦 Project Structure
 
+---
+
+## 📦 Project Structure
+## 📦 Project Structure
+
+```
 .
-├── ansible.cfg
-├── inventory
-├── playbook.yml
-├── roles/
-│   ├── docker-setup/
-│   ├── network_setup/
-│   ├── setup-mongodb/
-│   ├── backend-deployment/
-│   └── frontend-deployment/
-├── explanation.md
-└── README.md
-
-🚀 Technologies Used
-
-    Ansible – for orchestration
-
-    Docker – containerization
-
-    MongoDB – NoSQL database
-
-    Node.js / Express – backend
-
-    React – frontend
-
-    Vagrant & VirtualBox – development environment
-
-🔧 Setup Instructions
-1. Clone the Repository
-
-git clone https://github.com/your-username/yolo-ecommerce-ansible.git
-cd yolo-ecommerce-ansible
-
-2. Start the VM
-
-vagrant up
-
-3. Run the Ansible Playbook
-
-ansible-playbook -i inventory playbook.yml
+├── ansible.cfg                  # Ansible configuration file
+├── inventory                    # Inventory file with host definitions
+├── playbook.yml                 # Main Ansible playbook
+├── explanation.md               # Project explanation and rationale
+├── README.md                    # Project documentation
+├── roles/                       # Ansible roles directory
+│   ├── docker-setup/            # Role to install and configure Docker
+│   ├── network_setup/           # Role to create Docker networks
+│   ├── setup-mongodb/           # Role to deploy MongoDB container
+│   ├── backend-deployment/      # Role to deploy the backend app
+│   └── frontend-deployment/     # Role to deploy the frontend app
+└── Vagrantfile                  # Vagrant file to provision the Ubuntu VM
+```
 
 
