@@ -85,5 +85,40 @@ This will execute the playbook and run all tasks, including:
 
 ### 4. Access the application
 Once the playbook has finished running successfully, you should be able to access the YOLO e-commerce app by navigating to the VM's IP address in your browser (or localhost if you're running it locally):
+
     front end : http://localhost:3000
     back end: http://localhost:5000
+
+## Usage Instructions
+
+### 1. Access the Application
+
+Once the playbook has completed running successfully and the application is deployed, you can access the YOLO e-commerce app through your browser:
+
+- Open your browser and go to:
+
+    front end : http://localhost:3000
+    back end: http://localhost:5000
+
+### 2. Interacting with the Application
+
+Once the application is live, you can interact with the following features:
+
+- **Browse products**: View the list of products available for purchase.
+- **add products**: add to the list of products available
+
+
+### 3. Docker Management in VM
+
+If you need to restart or stop the application, you can use Docker commands to manage the containers:
+
+- To view running containers:
+
+        vagrant ssh
+
+        ```bash
+        docker ps
+
+- To view logs from the containers:
+
+       docker logs <container_id>
