@@ -8,5 +8,5 @@ spec:
     app: frontend
   ports:
     - protocol: TCP
-      port: 80        # exposed to the outside world
-      targetPort: 80  # matches Nginx container port inside the pod
+      port: 80        
+      targetPort: 80  
