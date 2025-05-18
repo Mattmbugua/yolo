@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: bigmatt98/ecommerce-backend:1.0.1
+        image: bigmatt98/ecommerce-backend:1.0.0
         ports:
         - containerPort: 5000 
         env:
