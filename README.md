@@ -26,7 +26,7 @@ This project automates the deployment of a containerized e-commerce application 
 │ ├── frontend-deployment.yaml
 │ ├── frontend-service.yaml
 │ ├── mongo-statefulset.yaml
-│ └── mongo-headless-service.yaml
+│ └── mongo-service.yaml
 └── Vagrantfile # Vagrant file to provision the Ubuntu VM
 ```
 
@@ -189,5 +189,27 @@ This project demonstrates the orchestration of a full-stack e-commerce applicati
 - Application deployed using **Kubernetes manifests**
 - Hosted on **Google Kubernetes Engine (GKE)**
 - Tagged Docker images stored in **Docker Hub**
+
+---
+
+## 🧩 Kubernetes Objects Used
+
+- `StatefulSet` for MongoDB to ensure stable network identity and persistent storage.
+- `Deployment` for stateless frontend and backend applications.
+- `Service` (ClusterIP & LoadBalancer) for internal communication and external exposure.
+- `PersistentVolumeClaim` for MongoDB data.
+- `Headless Service` for stable network identity to MongoDB pods.
+
+---
+
+## 🌐 Exposing the Application
+
+The application is exposed to the internet using a **LoadBalancer Service** attached to the frontend. This allocates an external IP through GKE which can be accessed directly via a browser.
+
+---
+
+## 🧱 Persistent Storage
+
+A `volumeClaimTemplate` was used inside the StatefulSet for MongoDB. The storage class used is `standard-rwo` on GKE. This ensures that MongoDB data persists even after pod restarts or re-creations.
 
 ---
