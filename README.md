@@ -179,3 +179,15 @@ This project demonstrates the orchestration of a full-stack e-commerce applicati
 📍 Access the running application at:
 
 **http://34.71.114.19/
+
+## ✅ Key Features
+
+- **Frontend** built with React
+- **Backend** built with Node.js and Express
+- **MongoDB** as the database, deployed using a **StatefulSet**
+- Persistent storage using **PersistentVolumeClaim**
+- Application deployed using **Kubernetes manifests**
+- Hosted on **Google Kubernetes Engine (GKE)**
+- Tagged Docker images stored in **Docker Hub**
+
+---
