@@ -100,7 +100,8 @@ app.use(express.json());
 app.use(upload.array()); // Handles form-data, used for file uploads
 
 // CORS
-app.use(cors());
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'] }));
+
 
 // Use Route
 app.use('/api/products', productRoute);
