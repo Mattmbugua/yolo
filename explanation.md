@@ -281,3 +281,11 @@ For this project, I used the following Kubernetes objects:
 - I addressed persistent volume claims by configuring the correct storage class and volume claim templates.
 
 ---
+
+## 5. Good Practices in Docker Image Tag Naming
+
+- Docker images for frontend, backend, and MongoDB are tagged with:
+  - Descriptive names reflecting the service (e.g., `frontend:v1.0.5`, `backend:1.0.2`).
+  - Versioning tags allow clear identification of deployed versions.
+- Images are stored on Docker Hub for easy access by the GKE cluster.
+- Manifest files reference these tagged images explicitly to ensure reproducible deployments.
