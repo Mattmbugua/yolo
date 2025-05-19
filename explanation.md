@@ -262,3 +262,12 @@ For this project, I used the following Kubernetes objects:
 - MongoDB is only exposed internally through the Headless Service to maintain security and stability.
 
 ---
+
+## 3. Use of Persistent Storage
+
+- Persistent storage is implemented through **PersistentVolumeClaims** defined in the `volumeClaimTemplates` of the MongoDB StatefulSet.
+- This ensures that database data is not lost when pods are recreated or rescheduled.
+- Storage class `standard-rwo` was used to provide ReadWriteOnce access mode, appropriate for single-writer database usage.
+- I verified that deleting the MongoDB pod does not lead to loss of data, confirming persistent storage functionality.
+
+---
