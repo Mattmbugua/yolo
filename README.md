@@ -20,7 +20,14 @@ This project automates the deployment of a containerized e-commerce application 
 │   ├── setup-mongodb/           # Role to deploy MongoDB container
 │   ├── backend-deployment/      # Role to deploy the backend app
 │   └── frontend-deployment/     # Role to deploy the frontend app
-└── Vagrantfile                  # Vagrant file to provision the Ubuntu VM
+├── manifests/ # Kubernetes manifest files for GKE deployment
+│ ├── backend-deployment.yaml
+│ ├── backend-service.yaml
+│ ├── frontend-deployment.yaml
+│ ├── frontend-service.yaml
+│ ├── mongo-statefulset.yaml
+│ └── mongo-headless-service.yaml
+└── Vagrantfile # Vagrant file to provision the Ubuntu VM
 ```
 
 
@@ -161,6 +168,6 @@ If a container isn't behaving as expected (e.g., it fails to start or crashes), 
 
 # Kubernetes Deployment on GKE
 
-This project demonstrates the orchestration of a full-stack e-commerce application using Kubernetes on Google Kubernetes Engine (GKE). It builds upon the Dockerized app from Week 2 and introduces Kubernetes concepts including Deployments, StatefulSets, Services, and Persistent Volumes.
+This project demonstrates the orchestration of a full-stack e-commerce application using Kubernetes on Google Kubernetes Engine (GKE). It builds upon the Dockerized app and uses Kubernetes concepts including Deployments, StatefulSets, Services, and Persistent Volumes.
 
 ---
