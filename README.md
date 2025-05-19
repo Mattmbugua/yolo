@@ -173,3 +173,9 @@ If a container isn't behaving as expected (e.g., it fails to start or crashes), 
 This project demonstrates the orchestration of a full-stack e-commerce application using Kubernetes on Google Kubernetes Engine (GKE). It builds upon the Dockerized app and uses Kubernetes concepts including Deployments, StatefulSets, Services, and Persistent Volumes.
 
 ---
+
+## 🚀 Live Application
+
+📍 Access the running application at:
+
+**http://[<EXTERNAL-IP>](http://34.71.114.19/)**
