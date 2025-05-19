@@ -213,3 +213,30 @@ The application is exposed to the internet using a **LoadBalancer Service** atta
 A `volumeClaimTemplate` was used inside the StatefulSet for MongoDB. The storage class used is `standard-rwo` on GKE. This ensures that MongoDB data persists even after pod restarts or re-creations.
 
 ---
+## 🐳 Docker Images
+
+All application components use tagged Docker images hosted on Docker Hub. Example naming:
+
+- `bigmatt98/ecommerce-frontend:v1.0.5`
+- `bigmatt98/ecommerce-backend:1.0.2`
+
+_Replace with your actual Docker Hub username and tags._
+
+---
+
+## 🔍 Validation Steps
+
+- All Pods and Services created successfully on GKE
+- MongoDB retains data after pod restarts (tested by adding items to cart, restarting MongoDB pod, and verifying data is intact)
+- Frontend accessible from the external IP
+- Verified end-to-end functionality: users can browse products, add items to products
+
+---
+
+## 📁 Explanation File
+
+Refer to [`explanation.md`](./explanation.md) for detailed rationale behind:
+
+- Kubernetes object selection (e.g., StatefulSet vs. Deployment)
+- Service types and exposure strategy
+- Storage class and persistence implementation
