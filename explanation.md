@@ -239,5 +239,17 @@ Before executing the main roles of the playbook, several important pre-tasks are
 | `file`           | Create directories or set permissions        |
 
     
+## 1. Choice of Kubernetes Objects Used for Deployment
 
-        
+For this project, I used the following Kubernetes objects:
+
+- **StatefulSet** for the MongoDB database:
+  - This was chosen over a Deployment because StatefulSets provide stable network identities and persistent storage, which are essential for databases.
+  - The `volumeClaimTemplates` ensure that the data persists even if the pod is deleted or rescheduled.
+- **Deployments** for frontend and backend:
+  - Deployments are suitable for stateless applications like the frontend UI and backend API because they manage rolling updates and scaling efficiently.
+- **Services**:
+  - I created a **Headless Service** for MongoDB to allow stable DNS names for each pod in the StatefulSet.
+  - For frontend and backend, I used ClusterIP or LoadBalancer services (depending on exposure requirements) to expose pods internally or externally.
+
+---
