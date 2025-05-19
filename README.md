@@ -41,6 +41,8 @@ This project automates the deployment of a containerized e-commerce application 
 - Node.js / Express – backend
 - React – frontend
 - Vagrant & VirtualBox – development environment
+- Kubernetes (StatefulSet, Deployment, Service, PVC)
+- Google Kubernetes Engine (GKE)
 
 ---
 
