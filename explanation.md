@@ -250,6 +250,14 @@ For this project, I used the following Kubernetes objects:
   - Deployments are suitable for stateless applications like the frontend UI and backend API because they manage rolling updates and scaling efficiently.
 - **Services**:
   - I created a **Headless Service** for MongoDB to allow stable DNS names for each pod in the StatefulSet.
-  - For frontend and backend, I used ClusterIP or LoadBalancer services (depending on exposure requirements) to expose pods internally or externally.
+  - For frontend and backend, I used LoadBalancer services to expose pods externally.
+
+---
+
+## 2. Method Used to Expose Your Pods to Internet Traffic
+
+- The frontend application is exposed using a **LoadBalancer Service**, which provides an external IP to access the app from the internet.
+- Backend services are exposed via **LoadBalancer Service** services for communication between pods.
+- MongoDB is only exposed internally through the Headless Service to maintain security and stability.
 
 ---
