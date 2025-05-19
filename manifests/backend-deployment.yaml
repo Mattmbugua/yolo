@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: backend
-        image: bigmatt98/ecommerce-backend:1.0.0
+        image: bigmatt98/ecommerce-backend:1.0.2
         ports:
         - containerPort: 5000
         env:
-        - name: MONGO_URL
-          value: mongodb://mongo.default.svc.cluster.local:27017/ecommerce
+        - name: MONGODB_URI
+          value: "mongodb://mongo:27017/yolomy"

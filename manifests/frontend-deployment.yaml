@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: bigmatt98/ecommerce-frontend:v1.0.0
+        image: bigmatt98/ecommerce-frontend:v1.0.5
         ports:
         - containerPort: 3000
