@@ -178,4 +178,4 @@ This project demonstrates the orchestration of a full-stack e-commerce applicati
 
 📍 Access the running application at:
 
-**http://http://34.71.114.19/
+**http://34.71.114.19/
