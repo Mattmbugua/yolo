@@ -1,4 +1,5 @@
-1. Choice of base image in each container.
+
+## 1. Choice of base image in each container.
 ---------------------------------------
 
 
