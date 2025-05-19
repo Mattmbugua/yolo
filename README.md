@@ -220,14 +220,14 @@ All application components use tagged Docker images hosted on Docker Hub. Exampl
 - `bigmatt98/ecommerce-frontend:v1.0.5`
 - `bigmatt98/ecommerce-backend:1.0.2`
 
-_Replace with your actual Docker Hub username and tags._
+
 
 ---
 
 ## 🔍 Validation Steps
 
 - All Pods and Services created successfully on GKE
-- MongoDB retains data after pod restarts (tested by adding items to cart, restarting MongoDB pod, and verifying data is intact)
+- MongoDB retains data after pod restarts (tested by adding items to products, restarting MongoDB pod, and verifying data is intact)
 - Frontend accessible from the external IP
 - Verified end-to-end functionality: users can browse products, add items to products
 
