@@ -159,3 +159,8 @@ If a container isn't behaving as expected (e.g., it fails to start or crashes), 
 
         docker volume inspect app-mongo-data
 
+# Kubernetes Deployment on GKE
+
+This project demonstrates the orchestration of a full-stack e-commerce application using Kubernetes on Google Kubernetes Engine (GKE). It builds upon the Dockerized app from Week 2 and introduces Kubernetes concepts including Deployments, StatefulSets, Services, and Persistent Volumes.
+
+---
