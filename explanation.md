@@ -271,3 +271,13 @@ For this project, I used the following Kubernetes objects:
 - I verified that deleting the MongoDB pod does not lead to loss of data, confirming persistent storage functionality.
 
 ---
+
+## 4. Running Application and Debugging Measures
+
+- The application is deployed on **Google Kubernetes Engine (GKE)** using tagged Docker Hub images.
+- Pods for frontend, backend, and database all run successfully.
+- I verified the frontend is accessible via the external IP of the LoadBalancer service.
+- Debugging included checking pod logs, events, and resource usage to resolve scheduling and image pull issues.
+- I addressed persistent volume claims by configuring the correct storage class and volume claim templates.
+
+---
